@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QuickNotes helps you organize personal, work and study notes.">
+  <title>QuickNotes — Your Notes, Organized</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-content">
+      <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
+      <h1>QuickNotes<span>.</span></h1>
+      <p>Capture thoughts. Organize ideas. Stay focused.</p>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <section class="section-card" aria-labelledby="add-heading">
+      <div class="section-heading">
+        <p class="section-label">CREATE</p>
+        <h2 id="add-heading">Add a note</h2>
+        <p>Save an idea before it slips away.</p>
+      </div>
+
+      <form id="note-form">
+        <div class="form-field">
+          <label for="note-input">What do you want to remember?</label>
+          <input
+            type="text"
+            id="note-input"
+            name="note"
+            placeholder="Write your note..."
+            maxlength="500"
+            autocomplete="off"
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="note-category">Category</label>
+          <select id="note-category" name="category">
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="Study">Study</option>
+          </select>
+        </div>
+
+        <button type="submit" id="add-btn">Add Note</button>
+      </form>
+
+      <p id="error-message" role="alert" aria-live="polite"></p>
+    </section>
+
+    <section class="section-card" aria-labelledby="notes-heading">
+      <div class="section-heading">
+        <p class="section-label">YOUR WORKSPACE</p>
+        <h2 id="notes-heading">Your notes</h2>
+        <p>Everything worth remembering, in one place.</p>
+      </div>
+
+      <div class="search-field">
+        <label for="search-input">Search your notes</label>
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Search by note text..."
+          autocomplete="off"
+        >
+      </div>
+
+      <p id="note-count" aria-live="polite">You have no notes yet.</p>
+
+      <ul id="notes-list" aria-label="Saved notes"></ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>QuickNotes · A project in learning to build useful software.</p>
+  </footer>
+</body>
+</html>
+
