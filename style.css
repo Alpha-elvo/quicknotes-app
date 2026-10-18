@@ -1,0 +1,333 @@
+/* 1. Reset: predictable sizing for every element */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #f4f6fa;
+  --color-surface: #ffffff;
+  --color-text: #172033;
+  --color-muted: #687386;
+  --color-border: #e1e6ef;
+  --color-primary: #5145cd;
+  --color-primary-hover: #3f35ad;
+  --color-danger: #c0394b;
+  --radius: 16px;
+  --shadow: 0 8px 28px rgba(26, 37, 64, 0.06);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* 2. Header */
+.app-header {
+  padding: 52px 20px 64px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #201b50, #5145cd);
+}
+
+.header-content {
+  width: min(100%, 900px);
+  margin: 0 auto;
+}
+
+.eyebrow,
+.section-label {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.eyebrow {
+  color: #c7c3ff;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.06em;
+}
+
+.app-header h1 span {
+  color: #f7c66a;
+}
+
+.app-header .header-content > p:last-child {
+  margin: 14px 0 0;
+  color: #e2e0ff;
+}
+
+/* 3. Main layout and sections */
+.app-main {
+  width: min(100% - 32px, 900px);
+  margin: -28px auto 48px;
+  position: relative;
+  display: grid;
+  gap: 24px;
+}
+
+.section-card {
+  min-width: 0;
+  padding: 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.section-heading {
+  margin-bottom: 24px;
+}
+
+.section-label {
+  color: var(--color-primary);
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: -0.035em;
+}
+
+.section-heading > p:last-child {
+  margin: 6px 0 0;
+  color: var(--color-muted);
+}
+
+/* 4. Form controls */
+#note-form {
+  display: flex;
+  align-items: end;
+  gap: 14px;
+}
+
+.form-field,
+.search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-field:first-child {
+  flex: 1;
+}
+
+.form-field label,
+.search-field label {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+input,
+select,
+button {
+  min-height: 46px;
+  font: inherit;
+  border-radius: 10px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  color: var(--color-text);
+  background: #ffffff;
+  border: 1px solid #cfd6e2;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input::placeholder {
+  color: #9aa3b2;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(81, 69, 205, 0.13);
+}
+
+#note-category {
+  min-width: 125px;
+}
+
+button {
+  padding: 10px 18px;
+  border: 0;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+#add-btn {
+  flex-shrink: 0;
+  color: #ffffff;
+  background: var(--color-primary);
+}
+
+#add-btn:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+button:focus-visible {
+  outline: 3px solid #a9a3ff;
+  outline-offset: 3px;
+}
+
+/* 5. Validation message */
+#error-message {
+  min-height: 1.5em;
+  margin: 12px 0 0;
+  color: var(--color-danger);
+  font-size: 0.875rem;
+}
+
+/* 6. Search and note count */
+.search-field {
+  margin-bottom: 18px;
+}
+
+#note-count {
+  margin: 0 0 14px;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+/* 7. Notes list and individual note cards */
+#notes-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#notes-list li {
+  min-width: 0;
+  margin: 0;
+  padding: 18px;
+  overflow-wrap: anywhere;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid #c5cbd7;
+  border-radius: 12px;
+}
+
+#notes-list li p {
+  margin: 0;
+}
+
+.note-text {
+  font-weight: 550;
+  white-space: pre-wrap;
+}
+
+.note-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.note-category {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+
+.category-personal {
+  background: #f0eaff;
+  color: #6541b5;
+}
+
+.category-work {
+  background: #e4f2ff;
+  color: #155c9b;
+}
+
+.category-study {
+  background: #e1f7eb;
+  color: #176b45;
+}
+
+/* 8. Delete button — used when we implement deletion */
+.delete-btn {
+  min-height: 34px;
+  margin-top: 12px;
+  padding: 6px 11px;
+  color: var(--color-danger);
+  background: #fff0f1;
+  font-size: 0.8rem;
+}
+
+.delete-btn:hover {
+  color: #ffffff;
+  background: var(--color-danger);
+}
+
+/* 9. Footer */
+.app-footer {
+  padding: 24px 16px;
+  color: var(--color-muted);
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* 10. Responsive layout for phones */
+@media (max-width: 600px) {
+  .app-header {
+    padding: 36px 20px 54px;
+  }
+
+  .app-main {
+    width: min(100% - 20px, 900px);
+    gap: 16px;
+    margin-top: -22px;
+  }
+
+  .section-card {
+    padding: 20px 16px;
+  }
+
+  #note-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-field,
+  .form-field:first-child,
+  #note-category,
+  #add-btn {
+    width: 100%;
+  }
+
+  #notes-list li {
+    padding: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
